@@ -20,3 +20,14 @@
     </v-row>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+}
+</script>
