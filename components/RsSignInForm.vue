@@ -67,6 +67,8 @@ export default {
           return
         }
 
+        localStorage.setItem('email', data.email)
+        localStorage.setItem('avatar', data.avatar)
         this.$store.dispatch('user/saveToken', data.token)
       } catch (err) {
         alert(err.message)

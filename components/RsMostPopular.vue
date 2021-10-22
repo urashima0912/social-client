@@ -5,11 +5,11 @@
         <v-row class="pa-2">
           <v-col
             cols="6"
-            v-for="image in images"
-            :key="image.id"
+            v-for="post in posts"
+            :key="post._id"
             class="rs-images-container-item mt-n3"
           >
-            <v-img :src="image.url"> </v-img>
+            <v-img :src="post.image" @click="onClick(post._id)"> </v-img>
           </v-col>
         </v-row>
       </div>
@@ -21,33 +21,44 @@
 export default {
   data() {
     return {
-      images: [
-        {
-          id: 1,
-          url: 'https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ',
-        },
-        {
-          id: 2,
-          url: 'https://i.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68',
-        },
-        {
-          id: 3,
-          url: 'https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w',
-        },
-        {
-          id: 4,
-          url: 'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
-        },
-        {
-          id: 5,
-          url: 'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
-        },
-        {
-          id: 6,
-          url: 'https://i.picsum.photos/id/1000/5626/3635.jpg?hmac=qWh065Fr_M8Oa3sNsdDL8ngWXv2Jb-EE49ZIn6c0P-g',
-        },
-      ],
+      posts: [],
+      onFetch: undefined,
     }
+  },
+
+  async beforeMount() {
+    this.onFetch = setInterval(async () => {
+      await this.loadMostPopular()
+    }, 2000)
+  },
+
+  destroyed() {
+    clearInterval(this.onFetch)
+  },
+
+  methods: {
+    async loadMostPopular() {
+      try {
+        const res = await fetch('http://localhost:4500/api/post/mostPopular')
+        const data = await res.json()
+        if (data.err) {
+          console.log(err)
+          return
+        }
+
+        this.posts = []
+
+        data.uploads.forEach((post) => {
+          this.posts.push(post)
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    onClick(postId) {
+      this.$router.push(`/details/${postId}`)
+    },
   },
 }
 </script>

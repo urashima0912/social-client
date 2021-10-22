@@ -9,8 +9,10 @@
         <v-btn text to="/sign-up">Sign Up</v-btn>
       </div>
       <div v-else>
-        <v-avatar> </v-avatar>
         <v-btn @click="logout">Logout</v-btn>
+        <v-avatar v-if="avatar">
+          <img :src="avatar" alt="John" />
+        </v-avatar>
       </div>
     </v-app-bar>
   </div>
@@ -21,6 +23,7 @@ export default {
   data() {
     return {
       token: '',
+      avatar: undefined,
     }
   },
 
@@ -28,6 +31,7 @@ export default {
     if (process.client) {
       console.log({ ctx: this })
       this.token = localStorage.getItem('token')
+      this.avatar = localStorage.getItem('avatar')
     }
   },
 

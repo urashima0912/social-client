@@ -19,9 +19,7 @@
 export default {
   watch: {
     '$store.state.user.token'(value) {
-      if (!value) {
-        this.$router.push('/sign-in')
-      } else {
+      if (value) {
         this.$router.push('/home')
       }
     },
