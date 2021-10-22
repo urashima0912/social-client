@@ -66,7 +66,6 @@ export default {
       }
 
       const formData = new FormData()
-
       formData.enctype = 'multipart/form-data'
       formData.append('avatar', this.avatar)
       formData.append('email', this.email)

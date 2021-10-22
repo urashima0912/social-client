@@ -22,3 +22,23 @@
     </v-app>
   </div>
 </template>
+
+<script>
+export default {
+  // beforeMount() {
+  //   const token = localStorage.getItem('token')
+  //   if (token) {
+  //     this.$store.commit('user/setToken', token)
+  //   }
+  // },
+  // watch: {
+  //   '$store.state.user.token'(value) {
+  //     if (!value) {
+  //       this.$router.push('/sign-in')
+  //     } else {
+  //       this.$router.push('/home')
+  //     }
+  //   },
+  // },
+}
+</script>

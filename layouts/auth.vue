@@ -14,3 +14,17 @@
     </v-app>
   </div>
 </template>
+
+<script>
+export default {
+  watch: {
+    '$store.state.user.token'(value) {
+      if (!value) {
+        this.$router.push('/sign-in')
+      } else {
+        this.$router.push('/home')
+      }
+    },
+  },
+}
+</script>
