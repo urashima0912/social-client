@@ -1,7 +1,9 @@
 <template>
   <div class="rs-app-bar">
     <v-app-bar app dark>
-      <v-toolbar-title>Red Social</v-toolbar-title>
+      <v-toolbar-title>
+        <v-btn to="/home" plain>Red Social</v-btn>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
       <div v-if="!token">
