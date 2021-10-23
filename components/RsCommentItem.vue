@@ -35,7 +35,6 @@ export default {
 
   methods: {
     onClick() {
-      console.log('xxx onClick: ', this.postId)
       this.$router.push(`/details/${this.postId}`)
     },
   },

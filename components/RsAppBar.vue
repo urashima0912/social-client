@@ -31,7 +31,6 @@ export default {
 
   created() {
     if (process.client) {
-      console.log({ ctx: this })
       this.token = localStorage.getItem('token')
       this.avatar = localStorage.getItem('avatar')
     }

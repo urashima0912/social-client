@@ -22,7 +22,6 @@ export default {
 
   created() {
     if (process.client) {
-      console.log('xxx beforeCreate')
       const token = localStorage.getItem('token')
       if (token) {
         this.$router.push('/home')
@@ -34,7 +33,6 @@ export default {
 
   computed: {
     token() {
-      console.log('AQUIIIIIIIII')
       return this.$store.state.user.token
     },
   },

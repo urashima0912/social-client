@@ -34,13 +34,8 @@ export default {
     clearInterval(this.onFetch)
   },
 
-  destroyed() {
-    console.log('xxx destroyed')
-  },
-
   methods: {
     async loadPost() {
-      console.log('xxx [METHOD] loadPost')
       try {
         const res = await fetch('http://localhost:4500/api/post/recentUploads')
         const data = await res.json()

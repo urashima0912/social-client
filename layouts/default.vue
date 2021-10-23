@@ -34,7 +34,6 @@ export default {
   watch: {
     '$store.state.user.token'(value) {
       if (!value) {
-        console.log('logout')
         this.$router.push('/sign-in')
       }
     },

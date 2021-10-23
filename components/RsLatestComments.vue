@@ -7,6 +7,7 @@
         :image="comment.post.image"
         :email="comment.user.email"
         :comment="comment.comment.description"
+        :postId="comment.post._id"
       />
     </RsCard>
   </div>
@@ -38,7 +39,6 @@ export default {
         for (const comment of data.comments) {
           this.comments.push(comment)
         }
-        console.log({ comments: this.comments })
       } catch (err) {
         console.log(err)
       }

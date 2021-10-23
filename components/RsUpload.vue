@@ -60,9 +60,6 @@ export default {
         const data = await res.json()
         if (data.err) {
           console.log('xxx [client] err: ', data.err)
-        } else {
-          // this.$router.push(`/details/${data.post._id}`)
-          console.log({ data })
         }
       } catch (err) {
         console.log('err: ', err.message)
